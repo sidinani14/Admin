@@ -6,13 +6,9 @@
   <title>Join Ideaform Design Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* ── TOKENS ── */
     :root {
       --gold: #c8a96e;
       --gold-dim: #a08050;
-      --accent: #c8a96e;
-
-      /* Light mode */
       --bg: #f5f1eb;
       --surface: #ffffff;
       --surface2: #f0ece4;
@@ -23,7 +19,6 @@
       --input-bg: #ffffff;
       --input-border: #d0cbc2;
       --checkbox-bg: #f5f1eb;
-      --tag-bg: #f0ece4;
       --hero-bg: #1c1916;
       --hero-text: #f5f1eb;
       --hero-muted: rgba(245,241,235,0.65);
@@ -33,10 +28,7 @@
       --submit-text: #f5f1eb;
       --submit-hover-bg: #c8a96e;
       --submit-hover-text: #1c1916;
-      --success-bg: #1c1916;
-      --success-text: #f5f1eb;
-      --whatsapp-bg: #25D366;
-      --whatsapp-text: #fff;
+      --whatsapp: #25D366;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -51,7 +43,6 @@
         --input-bg: #252018;
         --input-border: #3d3730;
         --checkbox-bg: #252018;
-        --tag-bg: #2a2420;
         --hero-bg: #0e0c0a;
         --hero-text: #f0ece4;
         --hero-muted: rgba(240,236,228,0.6);
@@ -61,13 +52,10 @@
         --submit-text: #1c1916;
         --submit-hover-bg: #e0c48a;
         --submit-hover-text: #1c1916;
-        --success-bg: #0e0c0a;
-        --success-text: #f0ece4;
       }
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -104,357 +92,248 @@
       border-radius: 50%;
       pointer-events: none;
     }
-
-    .hero-inner {
-      max-width: 740px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
+    .hero-inner { max-width: 740px; margin: 0 auto; position: relative; z-index: 1; }
 
     .badge {
       display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold-dim);
-      padding: 5px 14px;
-      margin-bottom: 28px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-dim);
+      padding: 5px 14px; margin-bottom: 28px;
     }
 
     .hero-headline {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(42px, 7vw, 68px);
-      font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
+      font-weight: 300; line-height: 1.05;
       color: var(--hero-text);
     }
-
-    /* ✦ All three words equally highlighted in gold italic */
-    .hero-headline .hl {
-      color: var(--gold);
-      font-style: italic;
-    }
+    .hero-headline .hl { color: var(--gold); font-style: italic; }
 
     .hero-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: 13px; letter-spacing: 0.32em;
+      text-transform: uppercase; color: var(--gold);
       margin: 20px 0 22px;
     }
 
     .hero-desc {
-      font-size: 14px;
-      line-height: 1.85;
-      color: var(--hero-muted);
-      max-width: 600px;
-      font-weight: 300;
+      font-size: 14px; line-height: 1.85;
+      color: var(--hero-muted); max-width: 600px; font-weight: 300;
     }
 
     .hero-meta {
       margin-top: 26px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
     }
 
     .time-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--gold);
-      letter-spacing: 0.06em;
-      border: 1px solid var(--gold-dim);
-      padding: 5px 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--gold); letter-spacing: 0.06em;
+      border: 1px solid var(--gold-dim); padding: 5px 14px;
     }
 
-    .whatsapp-hero {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--whatsapp-bg);
-      color: var(--whatsapp-text);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      padding: 7px 18px;
-      transition: opacity 0.2s;
+    .wa-hero {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--whatsapp); color: #fff;
+      text-decoration: none; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; padding: 7px 18px; transition: opacity 0.2s;
     }
-    .whatsapp-hero:hover { opacity: 0.88; }
-    .whatsapp-hero svg { flex-shrink: 0; }
+    .wa-hero:hover { opacity: 0.88; }
 
     /* ── LOCATION BAR ── */
     .loc-bar {
-      background-color: var(--loc-bg);
-      color: var(--loc-text);
-      text-align: center;
-      padding: 11px 20px;
-      font-size: 11.5px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 600;
+      background-color: var(--loc-bg); color: var(--loc-text);
+      text-align: center; padding: 11px 20px;
+      font-size: 11.5px; letter-spacing: 0.16em;
+      text-transform: uppercase; font-weight: 600;
     }
 
     /* ── FORM WRAPPER ── */
-    .form-wrap {
-      max-width: 740px;
-      margin: 0 auto;
-      padding: 52px 40px 90px;
-    }
+    .form-wrap { max-width: 740px; margin: 0 auto; padding: 52px 40px 90px; }
 
-    /* Section label */
     .sec {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 14px;
     }
-    .sec::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .sec::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-    .field {
-      margin-bottom: 36px;
-    }
+    .field { margin-bottom: 36px; }
 
     .field-label {
       display: block;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 12px;
-      line-height: 1.3;
+      font-size: 19px; font-weight: 400;
+      color: var(--ink); margin-bottom: 12px; line-height: 1.3;
     }
     .field-label .req { color: var(--gold); font-size: 14px; }
 
-    .field-hint {
-      font-size: 12px;
-      color: var(--ink3);
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
+    .field-hint { font-size: 12px; color: var(--ink3); margin-bottom: 12px; line-height: 1.5; }
 
-    /* Inputs */
     input[type="text"],
     input[type="email"],
     input[type="tel"],
     input[type="url"],
-    select,
-    textarea {
+    select, textarea {
       width: 100%;
       background: var(--input-bg);
       border: 1px solid var(--input-border);
       padding: 13px 16px;
       font-family: 'Outfit', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink);
-      outline: none;
-      border-radius: 0;
-      appearance: none;
+      font-size: 14px; font-weight: 300;
+      color: var(--ink); outline: none;
+      border-radius: 0; appearance: none;
       transition: border-color 0.2s, background 0.3s, color 0.3s;
     }
-    input[type="text"]:focus,
-    input[type="email"]:focus,
-    input[type="tel"]:focus,
-    input[type="url"]:focus,
-    select:focus,
-    textarea:focus { border-color: var(--gold); }
-
-    input::placeholder,
-    textarea::placeholder { color: var(--ink3); opacity: 1; }
+    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
+    input::placeholder, textarea::placeholder { color: var(--ink3); opacity: 1; }
 
     select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8a96e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 42px;
-      cursor: pointer;
+      background-repeat: no-repeat; background-position: right 16px center;
+      padding-right: 42px; cursor: pointer;
     }
-
-    textarea {
-      resize: vertical;
-      min-height: 110px;
-      line-height: 1.7;
-    }
+    textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
 
     /* Checkbox grid */
-    .cb-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
-      gap: 9px;
-    }
-
+    .cb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 9px; }
     .cb-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 13px;
-      border: 1px solid var(--border);
-      background: var(--checkbox-bg);
-      cursor: pointer;
-      transition: border-color 0.18s, background 0.18s;
-      user-select: none;
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 13px; border: 1px solid var(--border);
+      background: var(--checkbox-bg); cursor: pointer;
+      transition: border-color 0.18s; user-select: none;
     }
     .cb-item:hover { border-color: var(--gold); }
     .cb-item input[type="checkbox"] {
-      width: 15px; height: 15px;
-      accent-color: var(--gold);
-      cursor: pointer;
-      flex-shrink: 0;
-      margin-top: 2px;
+      width: 15px; height: 15px; accent-color: var(--gold);
+      cursor: pointer; flex-shrink: 0; margin-top: 2px;
     }
-    .cb-item span {
-      font-size: 13px;
-      color: var(--ink2);
-      line-height: 1.4;
-      transition: color 0.2s;
-    }
+    .cb-item span { font-size: 13px; color: var(--ink2); line-height: 1.4; transition: color 0.2s; }
     .cb-item input:checked + span { color: var(--ink); font-weight: 500; }
 
-    /* Other text input inside grid */
-    .other-input-wrap {
-      margin-top: 10px;
-    }
-    .other-input-wrap input {
-      font-size: 13px;
-      padding: 10px 14px;
-    }
+    .other-wrap { margin-top: 10px; }
+    .other-wrap input { font-size: 13px; padding: 10px 14px; }
 
-    /* Divider */
-    hr.div {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 44px 0;
+    hr.div { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
+
+    /* ── FILE UPLOAD SECTION ── */
+    .upload-tabs {
+      display: flex; gap: 0; margin-bottom: 16px;
+      border: 1px solid var(--border); overflow: hidden;
     }
+    .upload-tab {
+      flex: 1; padding: 10px 14px; text-align: center;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; cursor: pointer;
+      background: var(--checkbox-bg); color: var(--ink3);
+      border: none; border-right: 1px solid var(--border);
+      font-family: 'Outfit', sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    .upload-tab:last-child { border-right: none; }
+    .upload-tab.active { background: var(--gold); color: var(--ink); font-weight: 600; }
+
+    .upload-panel { display: none; }
+    .upload-panel.active { display: block; }
+
+    /* File drop zone */
+    .drop-zone {
+      border: 2px dashed var(--input-border);
+      padding: 32px 20px; text-align: center;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      background: var(--input-bg);
+    }
+    .drop-zone:hover, .drop-zone.dragover { border-color: var(--gold); background: var(--surface2); }
+    .drop-zone input[type="file"] { display: none; }
+    .drop-icon { font-size: 28px; margin-bottom: 10px; }
+    .drop-text { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+    .drop-text strong { color: var(--gold); cursor: pointer; }
+    .drop-text small { display: block; color: var(--ink3); margin-top: 4px; font-size: 11px; }
+    .file-chosen { margin-top: 10px; font-size: 12px; color: var(--gold); display: none; }
+
+    /* WA note in upload */
+    .wa-note {
+      padding: 18px 20px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-size: 13px; color: var(--ink2); line-height: 1.7;
+      text-align: center;
+    }
+    .wa-note a {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 12px; background: var(--whatsapp);
+      color: #fff; text-decoration: none;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; padding: 10px 22px;
+      transition: opacity 0.2s;
+    }
+    .wa-note a:hover { opacity: 0.88; }
 
     /* Submit */
-    .submit-row {
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    .submit-row { margin-top: 50px; display: flex; flex-direction: column; gap: 16px; }
 
     button[type="submit"] {
-      background: var(--submit-bg);
-      color: var(--submit-text);
+      background: var(--submit-bg); color: var(--submit-text);
       border: 1px solid var(--submit-bg);
-      padding: 17px 0;
-      width: 100%;
+      padding: 17px 0; width: 100%;
       font-family: 'Outfit', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
     button[type="submit"]:hover {
       background: var(--submit-hover-bg);
       border-color: var(--submit-hover-bg);
       color: var(--submit-hover-text);
     }
-    button[type="submit"]:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
+    button[type="submit"]:disabled { opacity: 0.55; cursor: not-allowed; }
 
-    .submit-note {
-      font-size: 12px;
-      color: var(--ink3);
-      text-align: center;
-      line-height: 1.6;
-    }
+    .submit-note { font-size: 12px; color: var(--ink3); text-align: center; line-height: 1.6; }
 
-    /* WhatsApp CTA at bottom */
-    .wa-section {
-      margin-top: 40px;
-      padding: 28px 30px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
+    /* Progress bar */
+    .progress-wrap { display: none; margin-top: 16px; }
+    .progress-bar-bg { background: var(--border); height: 4px; border-radius: 2px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s; }
+    .progress-label { font-size: 11px; color: var(--ink3); margin-top: 6px; text-align: center; }
+
+    /* ── THANK YOU ── */
+    #thankyou {
+      display: none;
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      padding: 60px 40px;
       text-align: center;
+      margin: 40px 0;
     }
-    .wa-label {
+    .ty-icon { font-size: 40px; margin-bottom: 20px; }
+    #thankyou h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      color: var(--ink);
-      font-weight: 400;
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300; margin-bottom: 16px;
+      color: var(--hero-text);
     }
-    .wa-sub {
-      font-size: 13px;
-      color: var(--ink3);
-      line-height: 1.6;
+    #thankyou h2 span { color: var(--gold); font-style: italic; }
+    #thankyou p { font-size: 14px; color: var(--hero-muted); line-height: 1.8; max-width: 500px; margin: 0 auto 24px; }
+    .ty-wa {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--whatsapp); color: #fff;
+      text-decoration: none; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; padding: 12px 28px; transition: opacity 0.2s;
     }
-    .wa-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--whatsapp-bg);
-      color: #fff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      padding: 13px 28px;
-      transition: opacity 0.2s;
-    }
-    .wa-btn:hover { opacity: 0.88; }
+    .ty-wa:hover { opacity: 0.88; }
 
     /* Validation errors */
-    .err {
-      display: none;
-      font-size: 12px;
-      color: #c0392b;
-      margin-top: 6px;
-    }
-    @media (prefers-color-scheme: dark) {
-      .err { color: #ff8a80; }
-    }
-
-    /* Success */
-    #success {
-      display: none;
-      background: var(--success-bg);
-      color: var(--success-text);
-      padding: 36px 40px;
-      text-align: center;
-      margin-top: 30px;
-    }
-    #success h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
-      font-weight: 300;
-      margin-bottom: 10px;
-    }
-    #success p { font-size: 13px; opacity: 0.7; line-height: 1.7; }
+    .err { display: none; font-size: 12px; color: #c0392b; margin-top: 6px; }
+    @media (prefers-color-scheme: dark) { .err { color: #ff8a80; } }
 
     @media (max-width: 580px) {
       .hero { padding: 40px 22px 44px; }
       .form-wrap { padding: 36px 22px 60px; }
       .cb-grid { grid-template-columns: 1fr 1fr; }
       .hero-meta { flex-direction: column; align-items: flex-start; }
+      .upload-tab { font-size: 10px; padding: 9px 8px; }
     }
   </style>
 </head>
@@ -474,8 +353,8 @@
     </p>
     <div class="hero-meta">
       <span class="time-pill">&#9711;&nbsp; Takes 2–3 minutes</span>
-      <a class="whatsapp-hero" href="https://wa.me/919993024999" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a class="wa-hero" href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20I%20would%20like%20to%20apply.%20Here%20is%20my%20portfolio%20and%20resume." target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Send Portfolio on WhatsApp
       </a>
     </div>
@@ -483,13 +362,13 @@
 </div>
 
 <!-- ══ LOCATION BAR ══ -->
-<div class="loc-bar">&#128205; This role is office-based in Indore, Madhya Pradesh &mdash; On-site only</div>
+<div class="loc-bar">&#128205; This role is office-based in Indore, Madhya Pradesh</div>
 
 <!-- ══ FORM ══ -->
 <div class="form-wrap">
-  <form id="form" novalidate>
+  <form id="recruitForm" novalidate>
 
-    <!-- ─ Personal Details ─ -->
+    <!-- Personal Details -->
     <div class="sec">Your Details</div>
 
     <div class="field">
@@ -521,12 +400,11 @@
 
     <hr class="div"/>
 
-    <!-- ─ Design Disciplines ─ -->
+    <!-- Design Disciplines -->
     <div class="sec">Design Disciplines</div>
-
     <div class="field">
       <label class="field-label">Which disciplines do you work in? <span class="req">*</span></label>
-      <div class="cb-grid" id="disciplines">
+      <div class="cb-grid">
         <label class="cb-item"><input type="checkbox" name="disciplines" value="Architecture"/><span>Architecture</span></label>
         <label class="cb-item"><input type="checkbox" name="disciplines" value="Interior Design"/><span>Interior Design</span></label>
         <label class="cb-item"><input type="checkbox" name="disciplines" value="Landscape Design"/><span>Landscape Design</span></label>
@@ -537,7 +415,7 @@
         <label class="cb-item"><input type="checkbox" name="disciplines" value="Project Management"/><span>Project Management</span></label>
         <label class="cb-item"><input type="checkbox" name="disciplines" value="Other" id="disc-other-cb"/><span>Other</span></label>
       </div>
-      <div class="other-input-wrap" id="disc-other-wrap" style="display:none;">
+      <div class="other-wrap" id="disc-other-wrap" style="display:none;">
         <input type="text" id="disc-other-text" placeholder="Please specify your discipline"/>
       </div>
       <div class="err" id="e-disc">Please select at least one discipline.</div>
@@ -545,9 +423,8 @@
 
     <hr class="div"/>
 
-    <!-- ─ Software Skills ─ -->
+    <!-- Software -->
     <div class="sec">Software Proficiency</div>
-
     <div class="field">
       <label class="field-label">Which tools do you use?</label>
       <div class="cb-grid">
@@ -561,24 +438,21 @@
         <label class="cb-item"><input type="checkbox" name="software" value="Adobe Suite"/><span>Adobe Suite</span></label>
         <label class="cb-item"><input type="checkbox" name="software" value="MS Project"/><span>MS Project</span></label>
         <label class="cb-item"><input type="checkbox" name="software" value="Grasshopper"/><span>Grasshopper</span></label>
-        <label class="cb-item"><input type="checkbox" name="software" value="AI Tools" id="ai-tools-cb"/><span>AI Tools</span></label>
+        <label class="cb-item"><input type="checkbox" name="software" value="AI Tools" id="ai-cb"/><span>AI Tools</span></label>
         <label class="cb-item"><input type="checkbox" name="software" value="Other" id="sw-other-cb"/><span>Other</span></label>
       </div>
-      <!-- AI Tools — specify which -->
-      <div class="other-input-wrap" id="ai-tools-wrap" style="display:none;">
-        <input type="text" id="ai-tools-text" placeholder="Which AI tools do you use? e.g. Midjourney, Stable Diffusion, Rerender AI…"/>
+      <div class="other-wrap" id="ai-wrap" style="display:none;">
+        <input type="text" id="ai-text" placeholder="Which AI tools? e.g. Midjourney, Stable Diffusion, Rerender AI…"/>
       </div>
-      <!-- Other software -->
-      <div class="other-input-wrap" id="sw-other-wrap" style="display:none;">
+      <div class="other-wrap" id="sw-other-wrap" style="display:none;">
         <input type="text" id="sw-other-text" placeholder="Please specify other software"/>
       </div>
     </div>
 
     <hr class="div"/>
 
-    <!-- ─ Experience ─ -->
+    <!-- Experience -->
     <div class="sec">Experience</div>
-
     <div class="field">
       <label class="field-label" for="experience">Years of Experience <span class="req">*</span></label>
       <select id="experience" name="experience" required>
@@ -595,9 +469,8 @@
 
     <hr class="div"/>
 
-    <!-- ─ Project Types ─ -->
+    <!-- Project Types -->
     <div class="sec">Project Experience</div>
-
     <div class="field">
       <label class="field-label">What types of projects have you worked on?</label>
       <div class="cb-grid">
@@ -613,16 +486,15 @@
         <label class="cb-item"><input type="checkbox" name="projectTypes" value="Interiors Only"/><span>Interiors Only</span></label>
         <label class="cb-item"><input type="checkbox" name="projectTypes" value="Other" id="pt-other-cb"/><span>Other</span></label>
       </div>
-      <div class="other-input-wrap" id="pt-other-wrap" style="display:none;">
+      <div class="other-wrap" id="pt-other-wrap" style="display:none;">
         <input type="text" id="pt-other-text" placeholder="Please specify other project type"/>
       </div>
     </div>
 
     <hr class="div"/>
 
-    <!-- ─ Availability ─ -->
+    <!-- Availability -->
     <div class="sec">Availability</div>
-
     <div class="field">
       <label class="field-label" for="startDate">When can you join us? <span class="req">*</span></label>
       <select id="startDate" name="startDate" required>
@@ -639,153 +511,295 @@
 
     <hr class="div"/>
 
-    <!-- ─ Portfolio & Resume ─ -->
+    <!-- Portfolio -->
     <div class="sec">Your Work</div>
 
     <div class="field">
-      <label class="field-label" for="portfolio">Portfolio Link</label>
-      <p class="field-hint">Behance, personal website, Google Drive folder, or any public link</p>
-      <input type="url" id="portfolio" name="portfolio" placeholder="https://your-portfolio.com"/>
+      <label class="field-label">Portfolio</label>
+      <p class="field-hint">Upload a file, paste a link, or send directly on WhatsApp — your choice.</p>
+      <div class="upload-tabs">
+        <button type="button" class="upload-tab active" onclick="switchTab('portfolio', 'upload')">&#8679; Upload File</button>
+        <button type="button" class="upload-tab" onclick="switchTab('portfolio', 'link')">&#128279; Paste Link</button>
+        <button type="button" class="upload-tab" onclick="switchTab('portfolio', 'wa')">&#128232; WhatsApp</button>
+      </div>
+      <div class="upload-panel active" id="portfolio-upload">
+        <div class="drop-zone" id="portfolio-drop" onclick="document.getElementById('portfolioFile').click()">
+          <input type="file" id="portfolioFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"/>
+          <div class="drop-icon">📁</div>
+          <div class="drop-text">
+            <strong>Click to browse</strong> or drag and drop your portfolio here<br/>
+            <small>PDF, Word, or image files accepted</small>
+          </div>
+          <div class="file-chosen" id="portfolio-chosen"></div>
+        </div>
+      </div>
+      <div class="upload-panel" id="portfolio-link">
+        <input type="url" id="portfolioLink" placeholder="https://behance.net/yourprofile or Google Drive link"/>
+      </div>
+      <div class="upload-panel" id="portfolio-wa">
+        <div class="wa-note">
+          Skip the upload — just send your portfolio directly on WhatsApp in any format you like. We'll receive it and get back to you.
+          <br/>
+          <a href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20here%20is%20my%20portfolio." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send Portfolio on WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
 
+    <!-- Resume -->
     <div class="field">
-      <label class="field-label" for="resume">Resume / CV Link</label>
-      <p class="field-hint">Google Drive, Dropbox, or any shareable link to your resume</p>
-      <input type="url" id="resume" name="resume" placeholder="https://drive.google.com/your-resume"/>
+      <label class="field-label">Resume / CV</label>
+      <p class="field-hint">Upload your resume, paste a link, or send on WhatsApp.</p>
+      <div class="upload-tabs">
+        <button type="button" class="upload-tab active" onclick="switchTab('resume', 'upload')">&#8679; Upload File</button>
+        <button type="button" class="upload-tab" onclick="switchTab('resume', 'link')">&#128279; Paste Link</button>
+        <button type="button" class="upload-tab" onclick="switchTab('resume', 'wa')">&#128232; WhatsApp</button>
+      </div>
+      <div class="upload-panel active" id="resume-upload">
+        <div class="drop-zone" id="resume-drop" onclick="document.getElementById('resumeFile').click()">
+          <input type="file" id="resumeFile" accept=".pdf,.doc,.docx"/>
+          <div class="drop-icon">📄</div>
+          <div class="drop-text">
+            <strong>Click to browse</strong> or drag and drop your resume here<br/>
+            <small>PDF or Word files accepted</small>
+          </div>
+          <div class="file-chosen" id="resume-chosen"></div>
+        </div>
+      </div>
+      <div class="upload-panel" id="resume-link">
+        <input type="url" id="resumeLink" placeholder="https://drive.google.com/your-resume-link"/>
+      </div>
+      <div class="upload-panel" id="resume-wa">
+        <div class="wa-note">
+          Send your resume directly on WhatsApp — PDF, Word, or any format works perfectly.
+          <br/>
+          <a href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20here%20is%20my%20resume." target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Send Resume on WhatsApp
+          </a>
+        </div>
+      </div>
     </div>
 
     <hr class="div"/>
 
-    <!-- ─ Ambitions ─ -->
+    <!-- Ambitions -->
     <div class="sec">Your Ambitions</div>
-
     <div class="field">
       <label class="field-label" for="ambitions">Where do you want to be in 5 years?</label>
-      <p class="field-hint">We're looking for people who aim high. Tell us what drives you and what you want to achieve in your design career.</p>
+      <p class="field-hint">We're looking for people who aim high. Tell us what drives you.</p>
       <textarea id="ambitions" name="ambitions" placeholder="Share your career aspirations, what excites you about design, and what kind of impact you want to make…"></textarea>
     </div>
 
-    <!-- ─ Submit ─ -->
+    <!-- Submit -->
     <div class="submit-row">
       <button type="submit" id="submitBtn">Apply to Ideaform &rarr;</button>
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">Uploading your files…</div>
+      </div>
       <p class="submit-note">Your information is used only for recruitment purposes and kept strictly confidential.</p>
-    </div>
-
-    <div id="success">
-      <h3>Thank you for applying.</h3>
-      <p>We've received your application and will reach out if your profile is a strong match.<br/>Welcome to our orbit.</p>
     </div>
 
   </form>
 
-  <!-- ─ WhatsApp CTA ─ -->
-  <div class="wa-section">
-    <div class="wa-label">Prefer to send directly?</div>
-    <p class="wa-sub">
-      Send your portfolio and resume in any format — PDF, images, drive links, anything works.<br/>
-      We're on WhatsApp and will get back to you.
-    </p>
-    <a class="wa-btn" href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20I%20would%20like%20to%20apply%20for%20a%20position%20at%20your%20studio.%20Here%20is%20my%20portfolio%20and%20resume." target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp Us on +91 9993024999
+  <!-- ══ THANK YOU ══ -->
+  <div id="thankyou">
+    <div class="ty-icon">✦</div>
+    <h2>Thank you for <span>applying.</span></h2>
+    <p>We've received your application and will be in touch if your profile is a strong match. We appreciate your ambition — welcome to our orbit.</p>
+    <a class="ty-wa" href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20I%20just%20applied%20via%20your%20form%20and%20wanted%20to%20share%20my%20portfolio%20directly." target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Also send us on WhatsApp
     </a>
   </div>
 
-</div>
+</div><!-- end form-wrap -->
 
 <script>
-  // ── Replace with your deployed Apps Script Web App URL ──
+  // ── REPLACE WITH YOUR DEPLOYED APPS SCRIPT URL ──
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxif6qc1eltnz7azRdivcD9bJBOAJHPgtHKlZ-X8iNUPUSgvGGmr-dy10iEJs0eBcCtPg/exec";
 
-  // ── Toggle "Other" fields ──
+  // Track which tab is active per section
+  const activeTab = { portfolio: 'upload', resume: 'upload' };
+
+  function switchTab(section, tab) {
+    activeTab[section] = tab;
+    // Update tab buttons
+    const tabs = document.querySelectorAll(`#${section}-upload, #${section}-link, #${section}-wa`);
+    tabs.forEach(p => p.classList.remove('active'));
+    document.getElementById(`${section}-${tab}`).classList.add('active');
+    // Update tab button styles
+    const buttons = document.querySelectorAll(`.upload-tabs .upload-tab`);
+    // Re-render active state by section proximity
+    const allSections = document.querySelectorAll('.field');
+    allSections.forEach(f => {
+      const tabsEl = f.querySelectorAll('.upload-tab');
+      const panels = f.querySelectorAll('.upload-panel');
+      if (panels.length === 0) return;
+      const panelIds = Array.from(panels).map(p => p.id);
+      const matchSection = panelIds[0].replace('-upload','').replace('-link','').replace('-wa','');
+      if (matchSection === section) {
+        tabsEl.forEach(t => t.classList.remove('active'));
+        const tabOrder = ['upload','link','wa'];
+        tabsEl[tabOrder.indexOf(tab)]?.classList.add('active');
+      }
+    });
+  }
+
+  // File chosen display
+  function setupFilePicker(inputId, chosenId, dropId) {
+    const input = document.getElementById(inputId);
+    const chosen = document.getElementById(chosenId);
+    const drop = document.getElementById(dropId);
+    input.addEventListener('change', () => {
+      if (input.files[0]) {
+        chosen.textContent = '✓ ' + input.files[0].name;
+        chosen.style.display = 'block';
+      }
+    });
+    drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+    drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+    drop.addEventListener('drop', e => {
+      e.preventDefault(); drop.classList.remove('dragover');
+      const file = e.dataTransfer.files[0];
+      if (file) {
+        const dt = new DataTransfer(); dt.items.add(file); input.files = dt.files;
+        chosen.textContent = '✓ ' + file.name; chosen.style.display = 'block';
+      }
+    });
+  }
+  setupFilePicker('portfolioFile', 'portfolio-chosen', 'portfolio-drop');
+  setupFilePicker('resumeFile', 'resume-chosen', 'resume-drop');
+
+  // Toggle "Other" fields
   function toggleOther(cbId, wrapId) {
     const cb = document.getElementById(cbId);
     const wrap = document.getElementById(wrapId);
-    if (cb && wrap) {
-      cb.addEventListener('change', () => {
-        wrap.style.display = cb.checked ? 'block' : 'none';
-      });
-    }
+    if (cb && wrap) cb.addEventListener('change', () => wrap.style.display = cb.checked ? 'block' : 'none');
   }
-  toggleOther('disc-other-cb',  'disc-other-wrap');
-  toggleOther('ai-tools-cb',    'ai-tools-wrap');
-  toggleOther('sw-other-cb',    'sw-other-wrap');
-  toggleOther('pt-other-cb',    'pt-other-wrap');
+  toggleOther('disc-other-cb', 'disc-other-wrap');
+  toggleOther('ai-cb', 'ai-wrap');
+  toggleOther('sw-other-cb', 'sw-other-wrap');
+  toggleOther('pt-other-cb', 'pt-other-wrap');
 
-  // ── Helpers ──
-  function showErr(id, show) {
-    const el = document.getElementById(id);
-    if (el) el.style.display = show ? 'block' : 'none';
-  }
-
-  function getChecked(name) {
-    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
-      .map(cb => cb.value).join(', ');
-  }
+  // Validation helpers
+  function showErr(id, show) { const el = document.getElementById(id); if (el) el.style.display = show ? 'block' : 'none'; }
+  function getChecked(name) { return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(c => c.value).join(', '); }
 
   function validate() {
     let ok = true;
-
     const name = document.getElementById('fullName').value.trim();
     showErr('e-name', !name); if (!name) ok = false;
-
     const email = document.getElementById('email').value.trim();
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    showErr('e-email', !emailValid); if (!emailValid) ok = false;
-
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    showErr('e-email', !emailOk); if (!emailOk) ok = false;
     const discs = document.querySelectorAll('input[name="disciplines"]:checked');
     showErr('e-disc', discs.length === 0); if (discs.length === 0) ok = false;
-
     const exp = document.getElementById('experience').value;
     showErr('e-exp', !exp); if (!exp) ok = false;
-
     const start = document.getElementById('startDate').value;
     showErr('e-start', !start); if (!start) ok = false;
-
     return ok;
   }
 
-  // ── Submit ──
-  document.getElementById('form').addEventListener('submit', async function(e) {
+  // File to base64
+  function fileToBase64(file) {
+    return new Promise((res, rej) => {
+      const r = new FileReader();
+      r.onload = () => res(r.result.split(',')[1]);
+      r.onerror = rej;
+      r.readAsDataURL(file);
+    });
+  }
+
+  // Progress
+  function setProgress(pct, label) {
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = label;
+  }
+
+  // Submit
+  document.getElementById('recruitForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    if (!validate()) return;
+    if (!validate()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
 
     const btn = document.getElementById('submitBtn');
-    btn.textContent = 'Submitting…';
-    btn.disabled = true;
+    const progressWrap = document.getElementById('progressWrap');
+    btn.textContent = 'Submitting…'; btn.disabled = true;
+    progressWrap.style.display = 'block';
+    setProgress(10, 'Preparing your application…');
 
-    // Build software string — append AI tool specifics if filled
+    // Build software string
     let software = getChecked('software');
-    const aiText = document.getElementById('ai-tools-text').value.trim();
+    const aiText = document.getElementById('ai-text').value.trim();
     if (aiText) software = software.replace('AI Tools', `AI Tools (${aiText})`);
     const swOther = document.getElementById('sw-other-text').value.trim();
     if (swOther) software = software.replace(/Other$/, `Other: ${swOther}`);
 
-    // Build disciplines string
     let disciplines = getChecked('disciplines');
     const discOther = document.getElementById('disc-other-text').value.trim();
     if (discOther) disciplines = disciplines.replace(/Other$/, `Other: ${discOther}`);
 
-    // Build project types string
     let projectTypes = getChecked('projectTypes');
     const ptOther = document.getElementById('pt-other-text').value.trim();
     if (ptOther) projectTypes = projectTypes.replace(/Other$/, `Other: ${ptOther}`);
 
+    const name = document.getElementById('fullName').value.trim();
+
+    // Handle portfolio
+    let portfolioData = null, portfolioName = '', portfolioLink = '';
+    if (activeTab.portfolio === 'upload') {
+      const f = document.getElementById('portfolioFile').files[0];
+      if (f) {
+        setProgress(30, 'Uploading portfolio…');
+        portfolioData = await fileToBase64(f);
+        portfolioName = name + '_Portfolio.' + f.name.split('.').pop();
+      }
+    } else if (activeTab.portfolio === 'link') {
+      portfolioLink = document.getElementById('portfolioLink').value.trim();
+    } else {
+      portfolioLink = 'Via WhatsApp';
+    }
+
+    // Handle resume
+    let resumeData = null, resumeName = '', resumeLink = '';
+    if (activeTab.resume === 'upload') {
+      const f = document.getElementById('resumeFile').files[0];
+      if (f) {
+        setProgress(60, 'Uploading resume…');
+        resumeData = await fileToBase64(f);
+        resumeName = name + '_Resume.' + f.name.split('.').pop();
+      }
+    } else if (activeTab.resume === 'link') {
+      resumeLink = document.getElementById('resumeLink').value.trim();
+    } else {
+      resumeLink = 'Via WhatsApp';
+    }
+
+    setProgress(80, 'Sending to Ideaform…');
+
     const payload = {
-      submittedAt:  new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      fullName:     document.getElementById('fullName').value.trim(),
-      email:        document.getElementById('email').value.trim(),
-      phone:        document.getElementById('phone').value.trim(),
-      college:      document.getElementById('college').value.trim(),
-      currentRole:  document.getElementById('currentRole').value.trim(),
+      submittedAt:   new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      fullName:      name,
+      email:         document.getElementById('email').value.trim(),
+      phone:         document.getElementById('phone').value.trim(),
+      college:       document.getElementById('college').value.trim(),
+      currentRole:   document.getElementById('currentRole').value.trim(),
       disciplines,
       software,
-      experience:   document.getElementById('experience').value,
+      experience:    document.getElementById('experience').value,
       projectTypes,
-      startDate:    document.getElementById('startDate').value,
-      portfolio:    document.getElementById('portfolio').value.trim(),
-      resume:       document.getElementById('resume').value.trim(),
-      ambitions:    document.getElementById('ambitions').value.trim(),
+      startDate:     document.getElementById('startDate').value,
+      portfolioLink,
+      portfolioFile: portfolioData,
+      portfolioName,
+      resumeLink,
+      resumeFile:    resumeData,
+      resumeName,
+      ambitions:     document.getElementById('ambitions').value.trim(),
     };
 
     try {
@@ -795,13 +809,18 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      document.getElementById('form').style.display = 'none';
-      document.getElementById('success').style.display = 'block';
-      document.getElementById('success').scrollIntoView({ behavior: 'smooth' });
+      setProgress(100, 'Done!');
+      setTimeout(() => {
+        document.getElementById('recruitForm').style.display = 'none';
+        const ty = document.getElementById('thankyou');
+        ty.style.display = 'block';
+        ty.scrollIntoView({ behavior: 'smooth' });
+      }, 400);
     } catch {
       btn.textContent = 'Apply to Ideaform →';
       btn.disabled = false;
-      alert('Something went wrong. Please try again or reach us on WhatsApp.');
+      progressWrap.style.display = 'none';
+      alert('Something went wrong. Please try again or reach us directly on WhatsApp.');
     }
   });
 </script>
