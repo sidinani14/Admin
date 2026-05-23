@@ -10,7 +10,6 @@
       --gold: #c8a96e;
       --gold-dim: #a08050;
       --bg: #f5f1eb;
-      --surface: #ffffff;
       --surface2: #f0ece4;
       --ink: #1c1916;
       --ink2: #4a453f;
@@ -34,7 +33,6 @@
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #151210;
-        --surface: #1f1b17;
         --surface2: #2a2420;
         --ink: #f0ece4;
         --ink2: #c8c0b4;
@@ -76,21 +74,17 @@
     }
     .hero::before {
       content: '';
-      position: absolute;
-      top: -80px; right: -80px;
+      position: absolute; top: -80px; right: -80px;
       width: 340px; height: 340px;
       border: 1px solid rgba(200,169,110,0.15);
-      border-radius: 50%;
-      pointer-events: none;
+      border-radius: 50%; pointer-events: none;
     }
     .hero::after {
       content: '';
-      position: absolute;
-      bottom: -100px; left: 30px;
+      position: absolute; bottom: -100px; left: 30px;
       width: 220px; height: 220px;
       border: 1px solid rgba(200,169,110,0.10);
-      border-radius: 50%;
-      pointer-events: none;
+      border-radius: 50%; pointer-events: none;
     }
     .hero-inner { max-width: 740px; margin: 0 auto; position: relative; z-index: 1; }
 
@@ -129,8 +123,8 @@
 
     .time-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--gold); letter-spacing: 0.06em;
-      border: 1px solid var(--gold-dim); padding: 5px 14px;
+      font-size: 12px; color: var(--gold);
+      letter-spacing: 0.06em; border: 1px solid var(--gold-dim); padding: 5px 14px;
     }
 
     .wa-hero {
@@ -198,7 +192,11 @@
     textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
 
     /* Checkbox grid */
-    .cb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 9px; }
+    .cb-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 9px;
+    }
     .cb-item {
       display: flex; align-items: flex-start; gap: 10px;
       padding: 10px 13px; border: 1px solid var(--border);
@@ -210,7 +208,7 @@
       width: 15px; height: 15px; accent-color: var(--gold);
       cursor: pointer; flex-shrink: 0; margin-top: 2px;
     }
-    .cb-item span { font-size: 13px; color: var(--ink2); line-height: 1.4; transition: color 0.2s; }
+    .cb-item span { font-size: 13px; color: var(--ink2); line-height: 1.4; }
     .cb-item input:checked + span { color: var(--ink); font-weight: 500; }
 
     .other-wrap { margin-top: 10px; }
@@ -218,50 +216,35 @@
 
     hr.div { border: none; border-top: 1px solid var(--border); margin: 44px 0; }
 
-    /* ── FILE UPLOAD SECTION ── */
-    .upload-tabs {
-      display: flex; gap: 0; margin-bottom: 16px;
-      border: 1px solid var(--border); overflow: hidden;
+    /* ── LINK + WA TABS ── */
+    .link-tabs {
+      display: flex; gap: 0; margin-bottom: 14px;
+      border: 1px solid var(--border); overflow: hidden; width: fit-content;
     }
-    .upload-tab {
-      flex: 1; padding: 10px 14px; text-align: center;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; cursor: pointer;
-      background: var(--checkbox-bg); color: var(--ink3);
-      border: none; border-right: 1px solid var(--border);
+    .link-tab {
+      padding: 9px 20px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      cursor: pointer; background: var(--checkbox-bg);
+      color: var(--ink3); border: none;
+      border-right: 1px solid var(--border);
       font-family: 'Outfit', sans-serif;
       transition: background 0.2s, color 0.2s;
     }
-    .upload-tab:last-child { border-right: none; }
-    .upload-tab.active { background: var(--gold); color: var(--ink); font-weight: 600; }
+    .link-tab:last-child { border-right: none; }
+    .link-tab.active { background: var(--gold); color: var(--ink); font-weight: 600; }
 
-    .upload-panel { display: none; }
-    .upload-panel.active { display: block; }
+    .link-panel { display: none; }
+    .link-panel.active { display: block; }
 
-    /* File drop zone */
-    .drop-zone {
-      border: 2px dashed var(--input-border);
-      padding: 32px 20px; text-align: center;
-      cursor: pointer; transition: border-color 0.2s, background 0.2s;
-      background: var(--input-bg);
-    }
-    .drop-zone:hover, .drop-zone.dragover { border-color: var(--gold); background: var(--surface2); }
-    .drop-zone input[type="file"] { display: none; }
-    .drop-icon { font-size: 28px; margin-bottom: 10px; }
-    .drop-text { font-size: 13px; color: var(--ink2); line-height: 1.6; }
-    .drop-text strong { color: var(--gold); cursor: pointer; }
-    .drop-text small { display: block; color: var(--ink3); margin-top: 4px; font-size: 11px; }
-    .file-chosen { margin-top: 10px; font-size: 12px; color: var(--gold); display: none; }
-
-    /* WA note in upload */
-    .wa-note {
+    .wa-option {
       padding: 18px 20px;
       background: var(--surface2);
       border: 1px solid var(--border);
-      font-size: 13px; color: var(--ink2); line-height: 1.7;
-      text-align: center;
+      font-size: 13px; color: var(--ink2);
+      line-height: 1.7;
     }
-    .wa-note a {
+    .wa-option a {
       display: inline-flex; align-items: center; gap: 8px;
       margin-top: 12px; background: var(--whatsapp);
       color: #fff; text-decoration: none;
@@ -269,7 +252,7 @@
       letter-spacing: 0.1em; padding: 10px 22px;
       transition: opacity 0.2s;
     }
-    .wa-note a:hover { opacity: 0.88; }
+    .wa-option a:hover { opacity: 0.88; }
 
     /* Submit */
     .submit-row { margin-top: 50px; display: flex; flex-direction: column; gap: 16px; }
@@ -281,7 +264,8 @@
       font-family: 'Outfit', sans-serif;
       font-size: 12px; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
-      cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
     button[type="submit"]:hover {
       background: var(--submit-hover-bg);
@@ -292,48 +276,49 @@
 
     .submit-note { font-size: 12px; color: var(--ink3); text-align: center; line-height: 1.6; }
 
-    /* Progress bar */
-    .progress-wrap { display: none; margin-top: 16px; }
-    .progress-bar-bg { background: var(--border); height: 4px; border-radius: 2px; overflow: hidden; }
-    .progress-bar-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s; }
-    .progress-label { font-size: 11px; color: var(--ink3); margin-top: 6px; text-align: center; }
+    /* Validation errors */
+    .err { display: none; font-size: 12px; color: #c0392b; margin-top: 6px; }
+    @media (prefers-color-scheme: dark) { .err { color: #ff8a80; } }
 
     /* ── THANK YOU ── */
     #thankyou {
       display: none;
       background: var(--hero-bg);
       color: var(--hero-text);
-      padding: 60px 40px;
+      padding: 70px 40px;
       text-align: center;
-      margin: 40px 0;
     }
-    .ty-icon { font-size: 40px; margin-bottom: 20px; }
+    .ty-icon { font-size: 36px; margin-bottom: 24px; color: var(--gold); }
     #thankyou h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 300; margin-bottom: 16px;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 300; margin-bottom: 18px;
       color: var(--hero-text);
     }
     #thankyou h2 span { color: var(--gold); font-style: italic; }
-    #thankyou p { font-size: 14px; color: var(--hero-muted); line-height: 1.8; max-width: 500px; margin: 0 auto 24px; }
+    #thankyou p {
+      font-size: 14px; color: var(--hero-muted);
+      line-height: 1.9; max-width: 480px;
+      margin: 0 auto 28px;
+    }
+    .ty-divider {
+      width: 40px; height: 1px;
+      background: var(--gold); margin: 0 auto 28px;
+    }
     .ty-wa {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--whatsapp); color: #fff;
       text-decoration: none; font-size: 12px; font-weight: 600;
-      letter-spacing: 0.1em; padding: 12px 28px; transition: opacity 0.2s;
+      letter-spacing: 0.1em; padding: 13px 30px;
+      transition: opacity 0.2s;
     }
     .ty-wa:hover { opacity: 0.88; }
-
-    /* Validation errors */
-    .err { display: none; font-size: 12px; color: #c0392b; margin-top: 6px; }
-    @media (prefers-color-scheme: dark) { .err { color: #ff8a80; } }
 
     @media (max-width: 580px) {
       .hero { padding: 40px 22px 44px; }
       .form-wrap { padding: 36px 22px 60px; }
       .cb-grid { grid-template-columns: 1fr 1fr; }
       .hero-meta { flex-direction: column; align-items: flex-start; }
-      .upload-tab { font-size: 10px; padding: 9px 8px; }
     }
   </style>
 </head>
@@ -511,72 +496,47 @@
 
     <hr class="div"/>
 
-    <!-- Portfolio -->
+    <!-- Portfolio & Resume -->
     <div class="sec">Your Work</div>
 
     <div class="field">
       <label class="field-label">Portfolio</label>
-      <p class="field-hint">Upload a file, paste a link, or send directly on WhatsApp — your choice.</p>
-      <div class="upload-tabs">
-        <button type="button" class="upload-tab active" onclick="switchTab('portfolio', 'upload')">&#8679; Upload File</button>
-        <button type="button" class="upload-tab" onclick="switchTab('portfolio', 'link')">&#128279; Paste Link</button>
-        <button type="button" class="upload-tab" onclick="switchTab('portfolio', 'wa')">&#128232; WhatsApp</button>
+      <p class="field-hint">Paste a link to your Behance, personal website, or Google Drive folder — or send directly on WhatsApp.</p>
+      <div class="link-tabs">
+        <button type="button" class="link-tab active" onclick="switchTab('portfolio','link')">&#128279; Paste Link</button>
+        <button type="button" class="link-tab" onclick="switchTab('portfolio','wa')">&#128232; Send on WhatsApp</button>
       </div>
-      <div class="upload-panel active" id="portfolio-upload">
-        <div class="drop-zone" id="portfolio-drop" onclick="document.getElementById('portfolioFile').click()">
-          <input type="file" id="portfolioFile" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"/>
-          <div class="drop-icon">📁</div>
-          <div class="drop-text">
-            <strong>Click to browse</strong> or drag and drop your portfolio here<br/>
-            <small>PDF, Word, or image files accepted</small>
-          </div>
-          <div class="file-chosen" id="portfolio-chosen"></div>
-        </div>
-      </div>
-      <div class="upload-panel" id="portfolio-link">
+      <div class="link-panel active" id="portfolio-link">
         <input type="url" id="portfolioLink" placeholder="https://behance.net/yourprofile or Google Drive link"/>
       </div>
-      <div class="upload-panel" id="portfolio-wa">
-        <div class="wa-note">
-          Skip the upload — just send your portfolio directly on WhatsApp in any format you like. We'll receive it and get back to you.
+      <div class="link-panel" id="portfolio-wa">
+        <div class="wa-option">
+          Skip the link — send your portfolio directly on WhatsApp in any format. PDF, images, Drive link — anything works.
           <br/>
           <a href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20here%20is%20my%20portfolio." target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Send Portfolio on WhatsApp
           </a>
         </div>
       </div>
     </div>
 
-    <!-- Resume -->
     <div class="field">
       <label class="field-label">Resume / CV</label>
-      <p class="field-hint">Upload your resume, paste a link, or send on WhatsApp.</p>
-      <div class="upload-tabs">
-        <button type="button" class="upload-tab active" onclick="switchTab('resume', 'upload')">&#8679; Upload File</button>
-        <button type="button" class="upload-tab" onclick="switchTab('resume', 'link')">&#128279; Paste Link</button>
-        <button type="button" class="upload-tab" onclick="switchTab('resume', 'wa')">&#128232; WhatsApp</button>
+      <p class="field-hint">Paste a Google Drive or Dropbox link to your resume — or send directly on WhatsApp.</p>
+      <div class="link-tabs">
+        <button type="button" class="link-tab active" onclick="switchTab('resume','link')">&#128279; Paste Link</button>
+        <button type="button" class="link-tab" onclick="switchTab('resume','wa')">&#128232; Send on WhatsApp</button>
       </div>
-      <div class="upload-panel active" id="resume-upload">
-        <div class="drop-zone" id="resume-drop" onclick="document.getElementById('resumeFile').click()">
-          <input type="file" id="resumeFile" accept=".pdf,.doc,.docx"/>
-          <div class="drop-icon">📄</div>
-          <div class="drop-text">
-            <strong>Click to browse</strong> or drag and drop your resume here<br/>
-            <small>PDF or Word files accepted</small>
-          </div>
-          <div class="file-chosen" id="resume-chosen"></div>
-        </div>
-      </div>
-      <div class="upload-panel" id="resume-link">
+      <div class="link-panel active" id="resume-link">
         <input type="url" id="resumeLink" placeholder="https://drive.google.com/your-resume-link"/>
       </div>
-      <div class="upload-panel" id="resume-wa">
-        <div class="wa-note">
+      <div class="link-panel" id="resume-wa">
+        <div class="wa-option">
           Send your resume directly on WhatsApp — PDF, Word, or any format works perfectly.
           <br/>
           <a href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20here%20is%20my%20resume." target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Send Resume on WhatsApp
           </a>
         </div>
@@ -596,10 +556,6 @@
     <!-- Submit -->
     <div class="submit-row">
       <button type="submit" id="submitBtn">Apply to Ideaform &rarr;</button>
-      <div class="progress-wrap" id="progressWrap">
-        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
-        <div class="progress-label" id="progressLabel">Uploading your files…</div>
-      </div>
       <p class="submit-note">Your information is used only for recruitment purposes and kept strictly confidential.</p>
     </div>
 
@@ -609,72 +565,41 @@
   <div id="thankyou">
     <div class="ty-icon">✦</div>
     <h2>Thank you for <span>applying.</span></h2>
+    <div class="ty-divider"></div>
     <p>We've received your application and will be in touch if your profile is a strong match. We appreciate your ambition — welcome to our orbit.</p>
-    <a class="ty-wa" href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20I%20just%20applied%20via%20your%20form%20and%20wanted%20to%20share%20my%20portfolio%20directly." target="_blank" rel="noopener">
+    <a class="ty-wa" href="https://wa.me/919993024999?text=Hi%20Ideaform%2C%20I%20just%20applied%20via%20your%20form%20and%20wanted%20to%20also%20share%20my%20portfolio%20directly." target="_blank" rel="noopener">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Also send us on WhatsApp
     </a>
   </div>
 
-</div><!-- end form-wrap -->
+</div>
 
 <script>
-  // ── REPLACE WITH YOUR DEPLOYED APPS SCRIPT URL ──
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxif6qc1eltnz7azRdivcD9bJBOAJHPgtHKlZ-X8iNUPUSgvGGmr-dy10iEJs0eBcCtPg/exec";
 
-  // Track which tab is active per section
-  const activeTab = { portfolio: 'upload', resume: 'upload' };
-
+  // Tab switcher
   function switchTab(section, tab) {
-    activeTab[section] = tab;
-    // Update tab buttons
-    const tabs = document.querySelectorAll(`#${section}-upload, #${section}-link, #${section}-wa`);
-    tabs.forEach(p => p.classList.remove('active'));
-    document.getElementById(`${section}-${tab}`).classList.add('active');
-    // Update tab button styles
-    const buttons = document.querySelectorAll(`.upload-tabs .upload-tab`);
-    // Re-render active state by section proximity
-    const allSections = document.querySelectorAll('.field');
-    allSections.forEach(f => {
-      const tabsEl = f.querySelectorAll('.upload-tab');
-      const panels = f.querySelectorAll('.upload-panel');
-      if (panels.length === 0) return;
-      const panelIds = Array.from(panels).map(p => p.id);
-      const matchSection = panelIds[0].replace('-upload','').replace('-link','').replace('-wa','');
-      if (matchSection === section) {
-        tabsEl.forEach(t => t.classList.remove('active'));
-        const tabOrder = ['upload','link','wa'];
-        tabsEl[tabOrder.indexOf(tab)]?.classList.add('active');
-      }
+    ['link','wa'].forEach(t => {
+      const panel = document.getElementById(section + '-' + t);
+      if (panel) panel.classList.remove('active');
     });
+    const active = document.getElementById(section + '-' + tab);
+    if (active) active.classList.add('active');
+
+    // Update tab button styles within the same field group
+    const allPanels = document.querySelectorAll(`#${section}-link, #${section}-wa`);
+    if (allPanels.length > 0) {
+      const parent = allPanels[0].closest('.field');
+      if (parent) {
+        parent.querySelectorAll('.link-tab').forEach((btn, i) => {
+          btn.classList.toggle('active', (i === 0 && tab === 'link') || (i === 1 && tab === 'wa'));
+        });
+      }
+    }
   }
 
-  // File chosen display
-  function setupFilePicker(inputId, chosenId, dropId) {
-    const input = document.getElementById(inputId);
-    const chosen = document.getElementById(chosenId);
-    const drop = document.getElementById(dropId);
-    input.addEventListener('change', () => {
-      if (input.files[0]) {
-        chosen.textContent = '✓ ' + input.files[0].name;
-        chosen.style.display = 'block';
-      }
-    });
-    drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
-    drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
-    drop.addEventListener('drop', e => {
-      e.preventDefault(); drop.classList.remove('dragover');
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        const dt = new DataTransfer(); dt.items.add(file); input.files = dt.files;
-        chosen.textContent = '✓ ' + file.name; chosen.style.display = 'block';
-      }
-    });
-  }
-  setupFilePicker('portfolioFile', 'portfolio-chosen', 'portfolio-drop');
-  setupFilePicker('resumeFile', 'resume-chosen', 'resume-drop');
-
-  // Toggle "Other" fields
+  // Toggle other fields
   function toggleOther(cbId, wrapId) {
     const cb = document.getElementById(cbId);
     const wrap = document.getElementById(wrapId);
@@ -685,7 +610,6 @@
   toggleOther('sw-other-cb', 'sw-other-wrap');
   toggleOther('pt-other-cb', 'pt-other-wrap');
 
-  // Validation helpers
   function showErr(id, show) { const el = document.getElementById(id); if (el) el.style.display = show ? 'block' : 'none'; }
   function getChecked(name) { return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(c => c.value).join(', '); }
 
@@ -705,34 +629,13 @@
     return ok;
   }
 
-  // File to base64
-  function fileToBase64(file) {
-    return new Promise((res, rej) => {
-      const r = new FileReader();
-      r.onload = () => res(r.result.split(',')[1]);
-      r.onerror = rej;
-      r.readAsDataURL(file);
-    });
-  }
-
-  // Progress
-  function setProgress(pct, label) {
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressLabel').textContent = label;
-  }
-
-  // Submit
   document.getElementById('recruitForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    if (!validate()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    if (!validate()) return;
 
     const btn = document.getElementById('submitBtn');
-    const progressWrap = document.getElementById('progressWrap');
     btn.textContent = 'Submitting…'; btn.disabled = true;
-    progressWrap.style.display = 'block';
-    setProgress(10, 'Preparing your application…');
 
-    // Build software string
     let software = getChecked('software');
     const aiText = document.getElementById('ai-text').value.trim();
     if (aiText) software = software.replace('AI Tools', `AI Tools (${aiText})`);
@@ -747,43 +650,9 @@
     const ptOther = document.getElementById('pt-other-text').value.trim();
     if (ptOther) projectTypes = projectTypes.replace(/Other$/, `Other: ${ptOther}`);
 
-    const name = document.getElementById('fullName').value.trim();
-
-    // Handle portfolio
-    let portfolioData = null, portfolioName = '', portfolioLink = '';
-    if (activeTab.portfolio === 'upload') {
-      const f = document.getElementById('portfolioFile').files[0];
-      if (f) {
-        setProgress(30, 'Uploading portfolio…');
-        portfolioData = await fileToBase64(f);
-        portfolioName = name + '_Portfolio.' + f.name.split('.').pop();
-      }
-    } else if (activeTab.portfolio === 'link') {
-      portfolioLink = document.getElementById('portfolioLink').value.trim();
-    } else {
-      portfolioLink = 'Via WhatsApp';
-    }
-
-    // Handle resume
-    let resumeData = null, resumeName = '', resumeLink = '';
-    if (activeTab.resume === 'upload') {
-      const f = document.getElementById('resumeFile').files[0];
-      if (f) {
-        setProgress(60, 'Uploading resume…');
-        resumeData = await fileToBase64(f);
-        resumeName = name + '_Resume.' + f.name.split('.').pop();
-      }
-    } else if (activeTab.resume === 'link') {
-      resumeLink = document.getElementById('resumeLink').value.trim();
-    } else {
-      resumeLink = 'Via WhatsApp';
-    }
-
-    setProgress(80, 'Sending to Ideaform…');
-
     const payload = {
       submittedAt:   new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-      fullName:      name,
+      fullName:      document.getElementById('fullName').value.trim(),
       email:         document.getElementById('email').value.trim(),
       phone:         document.getElementById('phone').value.trim(),
       college:       document.getElementById('college').value.trim(),
@@ -793,12 +662,8 @@
       experience:    document.getElementById('experience').value,
       projectTypes,
       startDate:     document.getElementById('startDate').value,
-      portfolioLink,
-      portfolioFile: portfolioData,
-      portfolioName,
-      resumeLink,
-      resumeFile:    resumeData,
-      resumeName,
+      portfolioLink: document.getElementById('portfolioLink').value.trim() || 'Via WhatsApp',
+      resumeLink:    document.getElementById('resumeLink').value.trim() || 'Via WhatsApp',
       ambitions:     document.getElementById('ambitions').value.trim(),
     };
 
@@ -809,18 +674,14 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      setProgress(100, 'Done!');
-      setTimeout(() => {
-        document.getElementById('recruitForm').style.display = 'none';
-        const ty = document.getElementById('thankyou');
-        ty.style.display = 'block';
-        ty.scrollIntoView({ behavior: 'smooth' });
-      }, 400);
+      document.getElementById('recruitForm').style.display = 'none';
+      const ty = document.getElementById('thankyou');
+      ty.style.display = 'block';
+      ty.scrollIntoView({ behavior: 'smooth' });
     } catch {
       btn.textContent = 'Apply to Ideaform →';
       btn.disabled = false;
-      progressWrap.style.display = 'none';
-      alert('Something went wrong. Please try again or reach us directly on WhatsApp.');
+      alert('Something went wrong. Please try again or reach us on WhatsApp.');
     }
   });
 </script>
